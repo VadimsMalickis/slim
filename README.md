@@ -74,7 +74,7 @@ cp .env.example .env
 **5. Start the PHP development server:**
 
 ```shell
-php -S localhost:8888 -t public
+composer serve
 ```
 
 That's it! Now go build something cool.
