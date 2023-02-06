@@ -9,8 +9,10 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class HomeController extends Controller
 {
-    public function index(Request $request, Response $response): Response
+    public function index(Request $request, Response $response, array $args = []): Response
     {
-        return $this->render($response, 'home/index.twig');
+        return $this->render($response, 'home/index.twig', [
+            'name' => $args['name']
+        ]);
     }
 }
