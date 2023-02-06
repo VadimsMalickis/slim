@@ -10,8 +10,10 @@ return function (Slim\App $app): void {
 
     $app->get('/about', [AboutController::class, 'index'])
         ->setName('about');
+
     $app->get('/contact', [ContactController::class, 'index'])
         ->setName('contact');
+
     $app->get('/[{name}]', [HomeController::class, 'index'])
         ->setArgument('name', 'User')
         ->setName('home');
