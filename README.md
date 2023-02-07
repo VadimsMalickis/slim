@@ -34,12 +34,6 @@
 
 - :test_tube: Unit testing with [PHPUnit](https://github.com/sebastianbergmann/phpunit)
 
-- :mag: Static code analysis with [PHPStan](https://github.com/phpstan/phpstan) and [Psalm](https://github.com/vimeo/psalm)
-
-- :telescope: Coding standards checking with [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) ([PSR-12](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-12-extended-coding-style-guide.md))
-
-- :hammer_and_wrench: CI workflows with [GitHub Actions](https://docs.github.com/en/actions)
-
 ## Requirements
 
 - [PHP](https://www.php.net) 8.1 or newer
