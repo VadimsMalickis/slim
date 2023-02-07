@@ -1,0 +1,7 @@
+
+.box {
+    background-color: var(--bs-purple);
+    height: 200px;
+    width: 80%;
+    margin: 10px;
+}

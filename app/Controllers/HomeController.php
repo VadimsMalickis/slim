@@ -15,6 +15,7 @@ class HomeController extends Controller
     {
         $repo = new HomeRepository();
         $users = $repo->getAllUsers();
+
         return $this->render($response, 'home/index.twig', [
             'name' => $args['name']
         ]);
