@@ -20,7 +20,7 @@ class DBConnection
         return $this->dbConn;
     }
 
-    public function close()
+    public function close(): void
     {
         $this->dbConn->close();
     }

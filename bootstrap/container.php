@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use DI\ContainerBuilder;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\ORMSetup;
 use Psr\Container\ContainerInterface;
 use Slim\Views\Twig;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
@@ -53,6 +55,16 @@ $definitions = [
 
         return $twig;
     },
+    EntityManager::class => function (ContainerInterface $container): EntityManager {
+        $settings = $container->get('settings');
+
+        $config = ORMSetup::createAttributeMetadataConfiguration(
+            $settings['doctrine']['metadata_dirs'],
+            $settings['doctrine']['dev_mode']
+        );
+//        return DriverManager::getConnection($settings['doctrine']['connection'], $config);
+        return EntityManager::create($settings['doctrine']['connection'], $config);
+    }
 ];
 
 return (new ContainerBuilder())->addDefinitions($definitions)->build();

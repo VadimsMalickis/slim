@@ -14,7 +14,7 @@ namespace App;
  */
 function env(string $key, mixed $default = null): mixed
 {
-    if (! isset($_SERVER[$key])) {
+    if (!isset($_SERVER[$key])) {
         return $default;
     }
 

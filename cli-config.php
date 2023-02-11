@@ -1,0 +1,25 @@
+<?php
+
+declare(strict_types=1);
+
+require __DIR__ . '/vendor/autoload.php';
+
+use DI\Container;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
+use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
+
+Dotenv\Dotenv::createImmutable(__DIR__)->load();
+
+/** @var Container $container */
+$container = require __DIR__ . '/bootstrap/container.php';
+
+$commands = [
+    // If you want to add your own custom console commands,
+    // you can do so here.
+];
+ConsoleRunner::run(
+    new SingleManagerProvider($container->get(EntityManager::class)),
+    $commands
+);
+
