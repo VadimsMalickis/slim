@@ -3,12 +3,15 @@
 declare(strict_types=1);
 
 use DI\ContainerBuilder;
+use Doctrine\Common\Cache\Psr6\DoctrineProvider;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
 use Psr\Container\ContainerInterface;
 use Slim\Views\Twig;
 use Symfony\Bridge\Twig\Extension\TranslationExtension;
+use Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Translation\Loader\JsonFileLoader;
 use Symfony\Component\Translation\Translator;
 
@@ -58,6 +61,12 @@ $definitions = [
     },
     EntityManager::class => function (ContainerInterface $container): EntityManager {
         $settings = $container->get('settings');
+
+        // Use the ArrayAdapter or the FilesystemAdapter depending on the value of the 'dev_mode' setting
+        // You can substitute the FilesystemAdapter for any other cache you prefer from the symfony/cache library
+        $cache = $settings['doctrine']['dev_mode'] ?
+            DoctrineProvider::wrap(new ArrayAdapter()) :
+            DoctrineProvider::wrap(new FilesystemAdapter(directory: $settings['doctrine']['cache_dir']));
 
         $config = ORMSetup::createAttributeMetadataConfiguration(
             $settings['doctrine']['metadata_dirs'],
