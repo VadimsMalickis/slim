@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use Doctrine\ORM\EntityManager;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\Twig;
 use Twig\Error\LoaderError;
@@ -13,7 +14,8 @@ use Twig\Error\SyntaxError;
 abstract class Controller
 {
     public function __construct(
-        protected Twig $twig
+        protected Twig $twig,
+        protected EntityManager $em,
     ) {
     }
 
