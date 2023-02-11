@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use DI\ContainerBuilder;
+use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMSetup;
 use Psr\Container\ContainerInterface;
@@ -62,8 +63,8 @@ $definitions = [
             $settings['doctrine']['metadata_dirs'],
             $settings['doctrine']['dev_mode']
         );
-//        return DriverManager::getConnection($settings['doctrine']['connection'], $config);
-        return EntityManager::create($settings['doctrine']['connection'], $config);
+        $connection = DriverManager::getConnection($settings['doctrine']['connection'], $config);
+        return new EntityManager($connection, $config);
     }
 ];
 

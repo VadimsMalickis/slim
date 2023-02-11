@@ -13,9 +13,6 @@ class HomeController extends Controller
 {
     public function index(Request $request, Response $response, array $args = []): Response
     {
-        $repo = new HomeRepository();
-        $users = $repo->getAllUsers();
-
         return $this->render($response, 'home/index.twig', [
             'name' => $args['name']
         ]);
