@@ -13,42 +13,46 @@
     <script defer src="/assets/js/main.js"></script>
 </head>
 <body class="d-flex flex-column h-100">
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url_for('home') }}">Slim 4 Starter</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbar">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a {{ is_current_url('home') ? 'class="nav-link active" aria-current="page"' : 'class="nav-link"' }} href="{{ url_for('home') }}">
-                                {% trans %}Home{% endtrans %}
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a {{ is_current_url('about') ? 'class="nav-link active" aria-current="page"' : 'class="nav-link"' }} href="{{ url_for('about') }}">
-                                {% trans %}About{% endtrans %}
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a {{ is_current_url('contact') ? 'class="nav-link active" aria-current="page"' : 'class="nav-link"' }} href="{{ url_for('contact') }}">
-                                {% trans %}Contact{% endtrans %}
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-    <footer class="footer bg-dark mt-auto py-3">
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <span class="text-muted">&copy; {{ 'now' | date('Y') }}. {% trans %}All rights reserved.{% endtrans %}</span>
+            <a class="navbar-brand" href="{{ url_for('home') }}">Slim 4 Starter</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a {{ is_current_url('home') ? 'class="nav-link active" aria-current="page"' : 'class="nav-link"' }}
+                            href="{{ url_for('home') }}">
+                            {% trans %}Home{% endtrans %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a {{ is_current_url('about') ? 'class="nav-link active" aria-current="page"' : 'class="nav-link"' }}
+                            href="{{ url_for('about') }}">
+                            {% trans %}About{% endtrans %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a {{ is_current_url('contact') ? 'class="nav-link active" aria-current="page"' : 'class="nav-link"' }}
+                            href="{{ url_for('contact') }}">
+                            {% trans %}Contact{% endtrans %}
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </footer>
+    </nav>
+</header>
+<main>
+    {% block content %}{% endblock %}
+</main>
+<footer class="footer bg-dark mt-auto py-3">
+    <div class="container">
+        <span class="text-muted">&copy; {{ 'now' | date('Y') }}. {% trans %}All rights reserved.{% endtrans %}</span>
+    </div>
+</footer>
 </body>
 </html>
